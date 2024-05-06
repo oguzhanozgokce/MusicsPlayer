@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "964663555914",
+    "project_id": "musicsplayer-30802",
+    "storage_bucket": "musicsplayer-30802.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964663555914:android:f02277b853147aa75ef3b3",
+        "android_client_info": {
+          "package_name": "com.oguzhanozgokce.musicsplayer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoQx5MEp0hvKBy1Zz7eRKGKrIR5WhS9o8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
