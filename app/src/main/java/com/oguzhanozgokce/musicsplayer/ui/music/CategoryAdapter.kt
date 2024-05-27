@@ -3,7 +3,7 @@ package com.oguzhanozgokce.musicsplayer.ui.music
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.oguzhanozgokce.musicsplayer.data.model.RoomCategory
+import com.oguzhanozgokce.musicsplayer.data.model.category.RoomCategory
 import com.oguzhanozgokce.musicsplayer.databinding.CategoryItemBinding
 
 class CategoryAdapter(

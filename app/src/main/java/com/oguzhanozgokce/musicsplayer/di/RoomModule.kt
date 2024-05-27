@@ -16,9 +16,18 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class RoomModule {
 
-    val MIGRATION_3_4 = object : Migration(3, 4) {
+    val MIGRATION_4_5 = object : Migration(4, 5) {
         override fun migrate(database: SupportSQLiteDatabase) {
-
+            database.execSQL("""
+                CREATE TABLE IF NOT EXISTS `songs` (
+                    `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                    `imageUrl` TEXT NOT NULL,
+                    `mediaId` TEXT NOT NULL,
+                    `songUrl` TEXT NOT NULL,
+                    `title` TEXT NOT NULL,
+                    `subtitle` TEXT NOT NULL
+                )
+            """)
         }
     }
 
@@ -30,7 +39,7 @@ class RoomModule {
         context,
         MusicDatabase::class.java,
         "music_database"
-    ).fallbackToDestructiveMigration().addMigrations(MIGRATION_3_4).build()
+    ).fallbackToDestructiveMigration().addMigrations(MIGRATION_4_5).build()
 
 
     @Provides

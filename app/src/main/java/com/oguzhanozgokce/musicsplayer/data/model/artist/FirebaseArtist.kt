@@ -1,4 +1,4 @@
-package com.oguzhanozgokce.musicsplayer.data.model
+package com.oguzhanozgokce.musicsplayer.data.model.artist
 
 data class FirebaseArtist (
     val name: String = "",

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.oguzhanozgokce.musicsplayer.databinding.FragmentMusicListBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +20,7 @@ class MusicListFragment : Fragment() {
 
     private lateinit var adapter: CategoryAdapter
     private lateinit var artistAdapter: ArtistAdapter
+    private lateinit var songsAdapter: SongsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,12 +35,11 @@ class MusicListFragment : Fragment() {
 
         CategoryAdapterBinding()
         ArtistAdapterBinding()
+        SongsAdapterBinding()
         // Verileri Firestore'dan çekin ve Room'a ekleyin
         viewModel.fetchCategoriesFromFirestore()
         viewModel.fetchArtistFromFirestore()
-
-
-
+        viewModel.fetchMusicsFromFirestore()
     }
 
     private fun CategoryAdapterBinding(){
@@ -61,6 +62,27 @@ class MusicListFragment : Fragment() {
             artistAdapter = ArtistAdapter(artists)
             binding.rcArtistsId.adapter = artistAdapter
         })
+    }
+
+    private fun SongsAdapterBinding(){
+        val layoutManager = GridLayoutManager(context, 3, GridLayoutManager.HORIZONTAL, false)
+
+        // SpanSizeLookup ayarı
+        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return 1 // Her öğe 1 span boyutunda olacak
+            }
+        }
+
+        binding.rcSongsId.layoutManager = layoutManager
+        songsAdapter = SongsAdapter(listOf())
+        binding.rcSongsId.adapter = songsAdapter
+
+        viewModel.musics.observe(viewLifecycleOwner, Observer { musics ->
+            songsAdapter.updateSongs(musics)
+        })
+        binding.rcSongsId.clipToPadding = false
+        binding.rcSongsId.setPadding(0, 0, 70, 0)
     }
 
 

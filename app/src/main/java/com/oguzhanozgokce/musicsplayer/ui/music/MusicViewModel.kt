@@ -5,10 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.oguzhanozgokce.musicsplayer.data.model.Artist
-import com.oguzhanozgokce.musicsplayer.data.model.RoomCategory
+import com.oguzhanozgokce.musicsplayer.data.model.artist.Artist
+import com.oguzhanozgokce.musicsplayer.data.model.category.RoomCategory
+import com.oguzhanozgokce.musicsplayer.data.model.musics.RoomMusic
 import com.oguzhanozgokce.musicsplayer.repository.MusicRepository
-import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,6 +24,9 @@ class MusicViewModel @Inject constructor(
     private val _artists = MutableLiveData<List<Artist>>()
     val artists: LiveData<List<Artist>> = _artists
 
+    private val _musics = MutableLiveData<List<RoomMusic>>()
+    val musics: LiveData<List<RoomMusic>> = _musics
+
      fun fetchCategoriesFromFirestore() {
         viewModelScope.launch {
             val categories = musicRepository.fetchCategoriesFromFirestore()
@@ -37,6 +40,14 @@ class MusicViewModel @Inject constructor(
             val artists = musicRepository.fetchArtistFromFirestore()
             _artists.postValue(artists)
             Log.e("MusicViewModel", "Fetched artists from Firestore")
+        }
+    }
+
+    fun fetchMusicsFromFirestore() {
+        viewModelScope.launch {
+            val musics = musicRepository.fetchMusicsFromFirestore()
+            _musics.postValue(musics)
+            Log.e("MusicViewModel", "Fetched musics from Firestore")
         }
     }
 }

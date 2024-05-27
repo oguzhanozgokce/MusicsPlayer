@@ -1,4 +1,4 @@
-package com.oguzhanozgokce.musicsplayer.data.model
+package com.oguzhanozgokce.musicsplayer.data.model.category
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -13,4 +13,5 @@ data class RoomCategory(
     val name: String,
     @ColumnInfo(name = "image")
     val image: String
+
 )

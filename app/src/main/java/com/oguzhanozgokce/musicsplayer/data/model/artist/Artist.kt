@@ -1,4 +1,4 @@
-package com.oguzhanozgokce.musicsplayer.data.model
+package com.oguzhanozgokce.musicsplayer.data.model.artist
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

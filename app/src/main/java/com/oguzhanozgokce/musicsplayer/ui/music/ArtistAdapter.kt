@@ -3,7 +3,7 @@ package com.oguzhanozgokce.musicsplayer.ui.music
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.oguzhanozgokce.musicsplayer.data.model.Artist
+import com.oguzhanozgokce.musicsplayer.data.model.artist.Artist
 import com.oguzhanozgokce.musicsplayer.databinding.ArtistItemBinding
 
 class ArtistAdapter(private  val artistList: List<Artist>)
