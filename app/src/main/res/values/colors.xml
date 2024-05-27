@@ -18,4 +18,9 @@
     <color name="lightGreen">#90ee90</color>
     <color name="SlateGray1">#c6e2ff</color>
     <color name="text_color">#4d4d4d</color>
+    <color name="dark_blue">#131921</color>
+    <color name="light_blue">#1E90FF</color>
+    <color name="light_yellow">#FEBD68</color>
+    <color name="light_green">#00FF00</color>
+    <color name="light_red">#FF0000</color>
 </resources>

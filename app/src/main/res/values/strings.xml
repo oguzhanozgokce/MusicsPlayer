@@ -7,4 +7,6 @@
     <string name="back_to_previous_song">Back to previous song</string>
     <string name="play_pause">Play/Pause</string>
     <string name="next_song">Next song</string>
+    <string name="categories">Categories</string>
+    <string name="music">Music</string>
 </resources>
