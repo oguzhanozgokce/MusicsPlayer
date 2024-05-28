@@ -8,9 +8,11 @@ import com.oguzhanozgokce.musicsplayer.R
 import com.oguzhanozgokce.musicsplayer.data.model.musics.Music
 import com.oguzhanozgokce.musicsplayer.data.model.musics.RoomMusic
 import com.oguzhanozgokce.musicsplayer.databinding.MusicItemBinding
+import com.oguzhanozgokce.musicsplayer.util.MusicPlayer
 
 class SongsAdapter(
-    private var songList: List<RoomMusic>)
+    private var songList: List<RoomMusic>,
+    private val onItemClickListener: (RoomMusic) -> Unit)
     : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
 
     inner class SongsViewHolder(val binding: MusicItemBinding) : RecyclerView.ViewHolder(
@@ -20,7 +22,12 @@ class SongsAdapter(
             binding.apply {
                 twArtistName.text = music.title
                 twSongName.text = music.subtitle
-                Glide.with(root.context).load(music.imageUrl).into(iwMusicImageId)
+                Glide.with(root.context).load(music.imageUrl).circleCrop().into(iwMusicImageId)
+
+                root.setOnClickListener {
+                    onItemClickListener(music)
+                    MusicPlayer.startPlaying(root.context, music)
+                }
             }
         }
     }

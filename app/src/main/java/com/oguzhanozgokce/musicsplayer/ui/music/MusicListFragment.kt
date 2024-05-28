@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.oguzhanozgokce.musicsplayer.databinding.FragmentMusicListBinding
@@ -75,7 +76,11 @@ class MusicListFragment : Fragment() {
         }
 
         binding.rcSongsId.layoutManager = layoutManager
-        songsAdapter = SongsAdapter(listOf())
+        songsAdapter = SongsAdapter(listOf()) { music ->
+            val action = MusicListFragmentDirections.actionMusicListFragmentToMusicDetailFragment(music)
+            findNavController().navigate(action)
+
+        }
         binding.rcSongsId.adapter = songsAdapter
 
         viewModel.musics.observe(viewLifecycleOwner, Observer { musics ->

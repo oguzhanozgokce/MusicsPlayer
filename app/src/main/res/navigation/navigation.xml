@@ -9,5 +9,19 @@
         android:id="@+id/musicListFragment"
         android:name="com.oguzhanozgokce.musicsplayer.ui.music.MusicListFragment"
         android:label="fragment_music_list"
-        tools:layout="@layout/fragment_music_list" />
+        tools:layout="@layout/fragment_music_list" >
+        <action
+            android:id="@+id/action_musicListFragment_to_musicDetailFragment"
+            app:destination="@id/musicDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/musicDetailFragment"
+        android:name="com.oguzhanozgokce.musicsplayer.ui.detail.MusicDetailFragment"
+        android:label="fragment_music_detail"
+        tools:layout="@layout/fragment_music_detail">
+        <argument
+            android:name="music"
+            app:argType="com.oguzhanozgokce.musicsplayer.data.model.musics.RoomMusic"
+            app:nullable="true"/>
+    </fragment>
 </navigation>
